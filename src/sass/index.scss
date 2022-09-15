@@ -1,5 +1,8 @@
 @import './base/common';
 @import './base/reset';
+@import './utils/mixins';
+@import './utils/variables';
+@import './utils/visually-hidden';
 
 @import './components/buttons';
 @import './components/container';
@@ -16,7 +19,3 @@
 @import './layouts/gallery';
 @import './layouts/header';
 @import './layouts/hero';
-
-@import './utils/mixins';
-@import './utils/variables';
-@import './utils/visually-hidden';
