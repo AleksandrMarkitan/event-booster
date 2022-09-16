@@ -3,7 +3,13 @@ export class EventsAPI{
     static #apikey = "GfgVh4R7D4nbAHFUVOA6O71Si5aOA40O";
     static #params ={};
     static #totalPages = 0; 
-    static #curentPage = 0;
+    static #currentPage = 0;
+    /**
+     * 
+     * @param {options} options - Object of options of query look into API_DOC
+     * 
+     * @returns - Array of events
+     */
     static async getEvents(options={}){
         const {countryCode = "", keyword ="", size =""}=options;
         if(keyword.trim()||countryCode.trim()){
@@ -20,15 +26,23 @@ export class EventsAPI{
                 }
             })
 
-            await ({ totalPages: this.#totalPages, number: this.#curentPage } = res.data.page)
+            await ({ totalPages: this.#totalPages, number: this.#currentPage } = res.data.page)
             return res.data._embedded;
         }catch(e){
             console.log(e);
         } 
     }
-    static getCurentPage(){
-        return this.#curentPage;
+    /**
+     * 
+     * @returns - Current page of Query. Start from ZERO
+     */
+    static getCurrentPage(){
+        return this.#currentPage;
     }
+    /**
+     * 
+     * @returns - Total pages of events
+     */
     static getTotalPages(){
         return this.#totalPages;
     } 
