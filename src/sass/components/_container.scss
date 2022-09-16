@@ -4,12 +4,12 @@
 	margin: 0 auto;
 	padding: 0 20px;
 
-	@include mq(tab) {
+	@include bp(tab) {
 		max-width: 704px;
 		padding: 0 32px;
 	}
 
-	@include mq(desc) {
+	@include bp(desc) {
 		max-width: 1248px;
 		padding: 0 16px;
 	}
