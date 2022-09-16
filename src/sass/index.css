@@ -1,5 +1,10 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
 html {
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
 }
 
 h1,
@@ -55,4 +60,11 @@ button {
           clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+.container {
+  max-width: 280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
 }/*# sourceMappingURL=index.css.map */
