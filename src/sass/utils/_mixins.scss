@@ -1,5 +1,8 @@
 // Для медіа-запитів
-@mixin mq($type) {
+// Використання
+// @include bp(вводите тип){пишите стилі}
+
+@mixin bp($type) {
 	$mobile: 280px;
 	$tablet: 704px;
 	$desktop: 1248px;
@@ -43,7 +46,7 @@
 
 // Для медіа-запиту ретини
 
-@mixin mq($type) {
+@mixin rt($type) {
 	@if $type ==retina {
 
 		@media screen and (min-device-pixel-ratio: 2),
