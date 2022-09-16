@@ -1,0 +1,18 @@
+.footer{
+    background: $primary-bg-color;
+}
+.footer{
+    &__text{
+        font-size: $primary-font-size;
+        text-align: center;    
+        color: $secondary-text-color;
+        @include bp(mob-only){
+            display: flex;
+            align-content: center;
+            flex-direction: column; 
+            font-size: $mob-primary-font-size;
+        }
+
+    }
+
+}
