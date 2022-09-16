@@ -34,12 +34,5 @@ export class EventsAPI{
     } 
 }
 
-async function tmp(){
-    console.log(await EventsAPI.getEvents())
-    console.log(EventsAPI.getCurentPage());
-    console.log(EventsAPI.getTotalPages());
-}
-
-tmp();
 
 
