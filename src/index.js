@@ -1,1 +1,1 @@
-import './js/blank1';
+import './js/api';
