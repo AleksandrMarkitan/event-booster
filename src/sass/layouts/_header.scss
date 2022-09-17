@@ -5,12 +5,12 @@
       background: linear-gradient(rgba(196, 196, 196, 0.03), rgba(196, 196, 196, 0));
       backdrop-filter: blur(15px);
       border-radius: 50%;
-      position: absolute;
+      position: fixed;
       left: -105px;
       top: -90px;
     }
     .header__logo-svg {
-      position: absolute;
+      position: fixed;
       width: 60px;
       height: 30px;
       top: 20px;

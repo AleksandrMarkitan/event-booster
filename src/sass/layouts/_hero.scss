@@ -63,6 +63,9 @@
         color: white;
       }
     }
+    .select__field:hover {
+    cursor: pointer;
+      }
     .search__form,
     .select__form {
       margin-bottom: 25px;
