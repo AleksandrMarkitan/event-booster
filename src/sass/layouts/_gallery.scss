@@ -1,8 +1,12 @@
 .body{
   background-color: $primary-bg-color;
+  @include bp(desk){
+    background-image: url('../images/bg body.jpg');
+  }
 }
 .gallery-section {
   background-color: $primary-bg-color;
+background-image: inherit;
 }
 // hidden text h2 for validator
 .visually-hidden {
