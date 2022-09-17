@@ -3,6 +3,7 @@
     justify-content: center;
     gap: 20px;
     display: flex;
+
     @include bp(tab){
       gap: 32px;
     }
@@ -11,7 +12,7 @@
 .gallery__div {
 display: flex;
 flex-direction: column;
-width: 120px;
+width: 130px;
 padding-top: 9px;
 padding-right: 10px;
 position: relative;
@@ -31,7 +32,17 @@ position: relative;
 
 }
 .gallery__img{
+  width: 120px;
+  height: 151px;
   border-radius: 50px 0;
+  @include bp(tab){
+    width: 14apx;
+    height: 178px;
+  }
+  @include bp(desk){
+    width: 267px;
+    height: 337px;
+  }
 }
 .gallery__list {
 }
@@ -70,23 +81,36 @@ position: relative;
 }
 .event-heading{
   color: $accent-color;
-  font-size: $primary-font-size;
-  line-height: 20px;
-
+  font-size: $mob-primary-font-size;
+  line-height: calc(17.07/14);
+  font-weight: $bold-font-weight;
+  @include bp(tab){
+    font-size: $primary-font-size;
+    line-height: calc(19.5/16);
+  }
 }
 
 .event-data {
   color:$primary-text-color;
   font-size: $mob-primary-font-size;
-  line-height: 20px;
+  line-height: 1.21;
   font-weight: 400;
+  @include bp(tab){
+    font-size: $primary-font-size;
+    line-height: calc(19.5/16);
+  }
+
 }
 
 .event-place {
   color:$primary-text-color;
   font-size: $mob-primary-font-size;
-  line-height: 17px;
-  font-weight: 600;
+  line-height: calc(14.63/12);
+  font-weight: $semibold-font-weight;
+  @include bp(tab){
+    font-size: $primary-font-size;
+    line-height: calc(17.7/14);
+  }
 }
 
 .event-heading {
