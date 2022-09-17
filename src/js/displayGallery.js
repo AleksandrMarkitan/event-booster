@@ -13,11 +13,5 @@ function galleryMarkup(arr = []){
         console.log(nameOfPlace);
 
         return acc += ``;})
-    // ((acc, event)=>{
-    //     const {name, id, images, dates:{start: {localDate}}, place} = event;
-    //     console.log(place);s
-    //     return acc+=`
-    //     `
-    // }, "")
 }
 
