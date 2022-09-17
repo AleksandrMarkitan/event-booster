@@ -1,0 +1,2 @@
+const e=document.querySelector(".js-open-team-modal"),t=document.querySelector("[data-modal-team]"),c=document.querySelector("[data-close-team]"),d=document.querySelector("[data-modal]"),l=document.querySelector("[data-close]"),a=document.querySelector(".gallery__card");function o(){t.classList.toggle("visually-hidden")}function n(){d.classList.toggle("visually-hidden")}e.addEventListener("click",o),c.addEventListener("click",o),a.addEventListener("click",n),l.addEventListener("click",n);
+//# sourceMappingURL=index.07e7e40f.js.map
