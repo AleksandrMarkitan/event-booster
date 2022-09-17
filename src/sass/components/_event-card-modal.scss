@@ -20,6 +20,15 @@
 
 .modal__preview {
   border-radius: 50%;
+  width: 102px;
+
+  @include bp(tab) {
+    width: 70px;
+  }
+
+  @include bp(desk) {
+    width: 132px;
+  }
 }
 
 .content {
@@ -34,6 +43,11 @@
 
   @include bp(tab) {
     display: block;
+    width: 249px;
+  }
+  @include bp(desk) {
+    height: 664px;
+    width: 427px;
   }
 }
 
@@ -100,9 +114,29 @@
 
 .price__wrap {
   display: flex;
+  align-items: center;
   gap: 13px;
 
   @include bp(desk) {
     gap: 16px;
+  }
+}
+
+.modal__btn {
+  width: 145px;
+  padding: 9px 19px 11px 19px;
+  background: $btn-color;
+  color: $primary-text-color;
+  border-radius: 5px;
+}
+
+.btn-info {
+  padding: 10px 3px;
+  color: $btn-color;
+  border: 1px solid $btn-color;
+  border-radius: 5px;
+
+  @include bp(tab) {
+    padding: 10px 15px;
   }
 }
