@@ -1,3 +1,4 @@
+const body = document.querySelector('body');
 const openModalTeam = document.querySelector('.js-open-team-modal');
 const modalTeam = document.querySelector('[data-modal-team]');
 const closeTeam = document.querySelector('[data-close-team]');
@@ -16,6 +17,7 @@ closeTeam.addEventListener('click', addHiddenClassToTeam);
 backdropModalTeam.addEventListener('click', (e) => {
 	if (!e.composedPath().includes(developers)) {
 		modalTeam.classList.toggle("visually-hidden");
+		body.classList.toggle("no-scroll")
 	}
 });
 
@@ -24,18 +26,21 @@ closeModal.addEventListener('click', addHiddenClassToModal);
 backdropModal.addEventListener('click', (e) => {
 	if (!e.composedPath().includes(modalWindow)) {
 		modal.classList.toggle("visually-hidden");
+		body.classList.toggle("no-scroll")
 	}
 })
 
 function addHiddenClassToTeam(e) {
-	e.stopPropagation();
+	// e.stopPropagation();
 	modalTeam.classList.toggle("visually-hidden");
+	body.classList.toggle("no-scroll")
 	closeByKeybord(modalTeam);
 }
 
 function addHiddenClassToModal(e) {
 	e.preventDefault();
 	modal.classList.toggle("visually-hidden");
+	body.classList.toggle("no-scroll")
 	closeByKeybord(modal)
 }
 
