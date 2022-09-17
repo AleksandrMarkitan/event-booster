@@ -11,10 +11,10 @@ export class EventsAPI{
      * @returns - Array of events
      */
     static async getEvents(options={}){
-        const {countryCode = "", keyword ="", size =""}=options;
+        const {countryCode = "", keyword =""}=options;
         if(keyword.trim()||countryCode.trim()){
             this.#params = {
-                ...options, 
+                ...options,
             }
         }
         try{
