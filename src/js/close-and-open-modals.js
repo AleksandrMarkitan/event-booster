@@ -47,7 +47,8 @@ function addHiddenClassToModal(e) {
 function closeByKeybord(value) {
 	document.addEventListener("keydown", (e) => {
 		if (e.code == "Escape") {
-			value.classList.toggle("visually-hidden");
+			value.classList.add("visually-hidden");
+			body.classList.remove("no-scroll")
 		}
 	}, { once: true });
 }
