@@ -2,24 +2,35 @@ const openModalTeam = document.querySelector('.js-open-team-modal');
 const modalTeam = document.querySelector('[data-modal-team]');
 const closeTeam = document.querySelector('[data-close-team]');
 const backdropModalTeam = document.querySelector('[data-modal-team]')
+const developers = document.querySelector('.developers')
 
 const modal = document.querySelector('[data-modal]');
 const closeModal = document.querySelector('[data-close]');
 const galleryCard = document.querySelector('.js-gallery-card')
 const backdropModal = document.querySelector('[data-modal]');
+const modalWindow = document.querySelector('.modal')
 
 
 openModalTeam.addEventListener('click', addHiddenClassToTeam);
 closeTeam.addEventListener('click', addHiddenClassToTeam);
-backdropModalTeam.addEventListener('click', addHiddenClassToTeam);
+backdropModalTeam.addEventListener('click', (e) => {
+	if (!e.composedPath().includes(developers)) {
+		modalTeam.classList.toggle("visually-hidden");
+	}
+});
 
 galleryCard.addEventListener('click', addHiddenClassToModal);
 closeModal.addEventListener('click', addHiddenClassToModal);
-backdropModal.addEventListener('click', addHiddenClassToModal)
+backdropModal.addEventListener('click', (e) => {
+	if (!e.composedPath().includes(modalWindow)) {
+		modal.classList.toggle("visually-hidden");
+	}
+})
 
-function addHiddenClassToTeam() {
+function addHiddenClassToTeam(e) {
+	e.stopPropagation();
 	modalTeam.classList.toggle("visually-hidden");
-	closeByKeybord(modalTeam)
+	closeByKeybord(modalTeam);
 }
 
 function addHiddenClassToModal(e) {
