@@ -27,7 +27,7 @@ export class EventsAPI{
             })
 
             await ({ totalPages: this.#totalPages, number: this.#currentPage } = res.data.page)
-            return res.data._embedded;
+            return res.data._embedded.events;
         }catch(e){
             console.log(e);
         } 
