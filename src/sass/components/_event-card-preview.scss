@@ -1,17 +1,30 @@
 .gallery__list {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 28px;
+    gap: 20px;
     display: flex;
+    @include bp(tab){
+      gap: 32px;
+    }
 }
 
 .gallery__div {
 display: flex;
 flex-direction: column;
-width: 288px;
-padding-top: 19px;
-padding-right: 21px;
+width: 120px;
+padding-top: 9px;
+padding-right: 10px;
 position: relative;
+@include bp(tab){
+  width: 152px;
+  padding-top: 10px;
+  padding-right: 11px;
+}
+@include bp(desk){
+  width: 288px;
+  padding-top: 19px;
+  padding-right: 21px;
+}
 }
 
 .gallery__img-container {
@@ -24,19 +37,29 @@ position: relative;
 }
 .gallery__pinkBorder{
   position: absolute;
-  width: 227px;
-  height: 213px;
+  width: 102px;
+  height: 95px;
   border: 1px solid rgba(220, 86, 197, 0.3);
   border-radius: 50px 0px;
   top: 0;
   right: 0;
+
+  @include bp(tab) {
+    width: 120px;
+    height: 112px;
+  }
+  @include bp(desk) {
+    width: 227px;
+    height: 212px;
+  }
 }
+
 .animation {
-  transition: all 0.3s ease;
+  // transition: all 0.3s ease;
 }
 
 .animation:hover {
-  transform: scale(1.05);
+  // transform: scale(1.05);
 }
 
 .event-info{
