@@ -1,9 +1,1 @@
-import './js/api';
-import './js/gallery-markap';
-import './js/search-form-handler';
-import './js/event-card-handler';
-import './js/event-card-modal-markap';
-import './js/event-card-modal-handler';
-import './js/modal-open-close';
-import './js/pagination-markap';
-import './js/pagination-handler';
+import './js/blank1';
