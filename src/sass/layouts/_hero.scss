@@ -15,7 +15,7 @@
       background-image: url(../images/bg_img/bg_img_desktop.jpg);
     }
   
-    @media screen and (min-width: 1280px) {
+    @media screen and (min-width: 1260px) {
       height: 446px;
       padding-top: 40px;
       padding-bottom: 90px;
@@ -38,7 +38,7 @@
       margin-bottom: 27px;
     }
   
-    @media screen and (min-width: 1280px) {
+    @media screen and (min-width: 1260px) {
       font-size: 50px;
       width: 600px;
       margin-bottom: 52px;
@@ -83,7 +83,7 @@
     .search__form,
     .select__form  {
     position: relative;
-    z-index: 99;
+    z-index: 2;
     height: 30px;
     width: 270px;
     font-family: 'Montserrat', sans-serif;
@@ -114,4 +114,6 @@
     left: 230px;
     pointer-events: none;
 }
+
+
 
