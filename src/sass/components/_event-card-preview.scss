@@ -3,7 +3,6 @@
     justify-content: center;
     gap: 20px;
     display: flex;
-
     @include bp(tab){
       gap: 32px;
     }
@@ -33,7 +32,7 @@ position: relative;
   height: 151px;
   border-radius: 50px 0;
   @include bp(tab){
-    width: 14apx;
+    width: 141px;
     height: 178px;
   }
   @include bp(desk){

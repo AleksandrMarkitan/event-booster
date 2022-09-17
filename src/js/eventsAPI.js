@@ -1,7 +1,9 @@
 import axios from "axios";
 export class EventsAPI{
     static #apikey = "GfgVh4R7D4nbAHFUVOA6O71Si5aOA40O";
-    static #params ={};
+    static #params ={
+        countryCode: "us"
+    };
     static #totalPages = 0; 
     static #currentPage = 0;
     /**
@@ -27,7 +29,7 @@ export class EventsAPI{
             })
 
             await ({ totalPages: this.#totalPages, number: this.#currentPage } = res.data.page)
-            return res.data._embedded;
+            return res.data._embedded.events;
         }catch(e){
             console.log(e);
         } 
