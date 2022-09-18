@@ -13,45 +13,41 @@ const modalWindow = document.querySelector('.modal');
 
 openModalTeam.addEventListener('click', addHiddenClassToTeam);
 closeTeam.addEventListener('click', addHiddenClassToTeam);
-backdropModalTeam.addEventListener('click', e => {
-  if (!e.composedPath().includes(developers)) {
-    modalTeam.classList.toggle('visually-hidden');
-    body.classList.toggle('no-scroll');
-  }
+backdropModalTeam.addEventListener('click', (e) => {
+	if (!e.composedPath().includes(developers)) {
+		modalTeam.classList.toggle("backdrop-hidden");
+		body.classList.toggle("no-scroll")
+	}
 });
 
 galleryCard.addEventListener('click', addHiddenClassToModal);
 closeModal.addEventListener('click', addHiddenClassToModal);
-backdropModal.addEventListener('click', e => {
-  if (!e.composedPath().includes(modalWindow)) {
-    modal.classList.toggle('visually-hidden');
-    body.classList.toggle('no-scroll');
-  }
-});
+backdropModal.addEventListener('click', (e) => {
+	if (!e.composedPath().includes(modalWindow)) {
+		modal.classList.toggle("backdrop-hidden");
+		body.classList.remove("no-scroll")
+	}
+})
 
 function addHiddenClassToTeam(e) {
-  // e.stopPropagation();
-  modalTeam.classList.toggle('visually-hidden');
-  body.classList.toggle('no-scroll');
-  closeByKeybord(modalTeam);
+	// e.stopPropagation();
+	modalTeam.classList.toggle("backdrop-hidden");
+	body.classList.toggle("no-scroll")
+	closeByKeybord(modalTeam);
 }
 
 function addHiddenClassToModal(e) {
-  e.preventDefault();
-  modal.classList.toggle('visually-hidden');
-  body.classList.toggle('no-scroll');
-  closeByKeybord(modal);
+	e.preventDefault();
+	modal.classList.toggle("backdrop-hidden");
+	body.classList.toggle("no-scroll")
+	closeByKeybord(modal)
 }
 
 function closeByKeybord(value) {
-  document.addEventListener(
-    'keydown',
-    e => {
-      if (e.code == 'Escape') {
-        value.classList.add('visually-hidden');
-        body.classList.remove('no-scroll');
-      }
-    },
-    { once: true }
-  );
+	document.addEventListener("keydown", (e) => {
+		if (e.code == "Escape") {
+			value.classList.add("backdrop-hidden");
+			body.classList.remove("no-scroll")
+		}
+	}, { once: true });
 }
