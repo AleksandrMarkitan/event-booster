@@ -2,10 +2,10 @@ import axios from 'axios';
 export class EventsAPI {
   static #apikey = 'GfgVh4R7D4nbAHFUVOA6O71Si5aOA40O';
   static #params = {
-    countryCode: 'US',
+    countryCode: 'us',
   };
-  static #totalPages = 1;
-  static #currentPage = 1;
+  static #totalPages = 0;
+  static #currentPage = 0;
   /**
    *
    * @param {options} options - Object of options of query look into API_DOC
