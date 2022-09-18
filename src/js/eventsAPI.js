@@ -1,9 +1,9 @@
 import axios from "axios";
 export class EventsAPI{
-    static #apikey = "GfgVh4R7D4nbAHFUVOA6O71Si5aOA40O";
-    static #params ={};
-    static #totalPages = 0; 
-    static #currentPage = 0;
+    static apikey = "GfgVh4R7D4nbAHFUVOA6O71Si5aOA40O";
+    static params ={};
+    static totalPages = 0; 
+    static currentPage = 0;
     /**
      * 
      * @param {options} options - Object of options of query look into API_DOC
@@ -13,7 +13,7 @@ export class EventsAPI{
     static async getEvents(options={}){
         const {countryCode = "", keyword ="", size =""}=options;
         if(keyword.trim()||countryCode.trim()){
-            this.#params = {
+            EventsAPI.params = {
                 ...options, 
             }
         }
@@ -21,12 +21,12 @@ export class EventsAPI{
             const res = await axios.get("https://app.ticketmaster.com/discovery/v2/events.json",
             {
                 params: {
-                    ...this.#params,
-                    apikey: this.#apikey,
+                    ...EventsAPI.params,
+                    apikey: EventsAPI.apikey,
                 }
             })
 
-            await ({ totalPages: this.#totalPages, number: this.#currentPage } = res.data.page)
+            await ({ totalPages: EventsAPI.totalPages, number: EventsAPI.currentPage } = res.data.page)
             return res.data._embedded.events;
         }catch(e){
             console.log(e);
@@ -37,13 +37,14 @@ export class EventsAPI{
      * @returns - Current page of Query. Start from ZERO
      */
     static getCurrentPage(){
-        return this.#currentPage;
+        return EventsAPI.currentPage;
     }
     /**
      * 
      * @returns - Total pages of events
      */
     static getTotalPages(){
-        return this.#totalPages;
+        return EventsAPI.totalPages;
     } 
 }
+
