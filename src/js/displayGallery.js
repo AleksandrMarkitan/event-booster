@@ -12,12 +12,12 @@ function galleryMarkup(arr = []){
         const {name, id, images, dates:{start: {localDate}}, _embedded:{venues}} = event;
         const {name: nameOfPlace} =venues[0]
         const eventImg =images.find(elem =>{
-            if(115<=elem.height&&elem.height <= 350&&elem.ratio ==="16_9" ){
+            if(300<=elem.height&&elem.height <= 450&&elem.ratio ==="16_9" ){
                 return elem
             }
         })||images[0]
         return acc += 
-        `<li class="gallery__item data-id ="${id}">
+        `<li class="class="gallery__item js-gallery-card" data-id ="${id}">
          <div class="gallery__div">
             <a class="gallery__link animation" href="">
                 <img class="gallery__img" src="${eventImg.url}" width="267px" height="337px"
