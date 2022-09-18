@@ -4,8 +4,8 @@ export class EventsAPI {
   static #params = {
     countryCode: 'US',
   };
-  static #totalPages = 0;
-  static #currentPage = 0;
+  static #totalPages = 1;
+  static #currentPage = 1;
   /**
    *
    * @param {options} options - Object of options of query look into API_DOC
