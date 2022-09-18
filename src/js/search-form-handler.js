@@ -7,6 +7,7 @@ const refs = {
   countrylist: document.querySelector('.country_list'),
   selectCountryField: document.querySelector('.select__field'),
   keyword: document.querySelector('.keyword'),
+  gallary: document.querySelector('.gallery-section'),
 };
 
 let countryCode = '';
@@ -24,7 +25,9 @@ function onSelectCountryBtnHdlr(e) {
 }
 
 function onCountrylistHdlr(e) {
-  refs.selectCountryField.dataset.country_id = e.target.dataset.id;
+  if (e.target.dataset.id === 'RU') {
+    refs.gallary.innerHTML = `<h1 class="ru">РУССКИЙ ВОЕННЫЙ КОРАБЛЬ!<br>ИДИ НАХУЙ</h1>`;
+  }
   refs.selectCountryField.placeholder = e.target.textContent;
   refs.countrylist.classList.add('visually-hidden');
   countryCode = e.target.dataset.id;
