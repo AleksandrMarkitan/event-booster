@@ -1,6 +1,6 @@
+@import './utils/mixins';
 @import './base/common';
 @import './base/reset';
-@import './utils/mixins';
 @import './utils/variables';
 @import './utils/visually-hidden';
 
@@ -13,10 +13,10 @@
 @import './components/pagination';
 @import './components/search-fields';
 @import './components/section';
-@import './components/team-card-modal';
+@import './components/developers-modal';
+@import './components/backdrop';
 
 @import './layouts/footer';
 @import './layouts/gallery';
 @import './layouts/header';
 @import './layouts/hero';
-@import './components/developers-modal'
