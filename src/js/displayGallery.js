@@ -10,7 +10,7 @@ export async function displayGallery(options){
 function galleryMarkup(arr = []){
     return arr.reduce((acc, event)=>{
         const {name, id, images, dates:{start: {localDate}}, _embedded:{venues}} = event;
-        const {name: nameOfPlace} =venues[0]
+        const {address:{line1: address}, city:{name: cityName}, name: nameOfPlace} =venues[0]
         const eventImg =images.find(elem =>{
             if(300<=elem.height&&elem.height <= 450&&elem.ratio ==="16_9" ){
                 return elem
@@ -29,7 +29,7 @@ function galleryMarkup(arr = []){
                     <p class="event-place">
                         <svg class="Map__icon" width="7" height="10">
                             <use href="./images/sprite.svg#Map"></use>
-                        </svg>${nameOfPlace}</p>
+                        </svg>${nameOfPlace||cityName||address||"No info about place"}</p>
                 </div>
             </a>
         </div></li>`;}, "")

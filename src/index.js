@@ -9,4 +9,4 @@ import './js/pagination-handler';
 import './js/pagination-markap';
 import './js/search-form-handler';
 import { displayGallery } from './js/displayGallery';
-displayGallery({ countryCode: 'BE', size: 40 });
+displayGallery({ countryCode: 'CH', size: 40 });
