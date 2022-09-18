@@ -1,13 +1,17 @@
-.body{
+body{
   background-color: $primary-bg-color;
+  @include bp(tab){
+    background-image: url('../images/bg_img/bg_img_black/bgTab.jpg');
+  }
   @include bp(desk){
-    background-image: url('../images/bg body.jpg');
+    background-image: url('../images/bg_img/bg_img_black/BGdesk.jpg');
   }
 }
-.gallery-section {
-  background-color: $primary-bg-color;
-background-image: inherit;
-}
+
+
+// .gallery-section {
+//   background-color: $primary-bg-color;
+// }
 // hidden text h2 for validator
 .visually-hidden {
   position: absolute;
