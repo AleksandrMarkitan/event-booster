@@ -63,6 +63,8 @@
   z-index: 100;
   top: 50%;
   transform: translate(-42px, -50%);
+
+  pointer-events: none;
 }
 .search__svg,
 .select__svg {
