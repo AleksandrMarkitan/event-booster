@@ -26,12 +26,11 @@ export class EventsAPI{
                     ...EventsAPI.params,
                     apikey: EventsAPI.apikey,
                 }
-            })
-
+            });
             await ({ totalPages: EventsAPI.totalPages, number: EventsAPI.currentPage } = res.data.page)
             return res.data._embedded.events;
         }catch(e){
-            console.log(e);
+
         } 
     }
     /**

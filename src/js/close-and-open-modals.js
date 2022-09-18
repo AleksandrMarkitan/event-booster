@@ -1,3 +1,5 @@
+import { renderGalleryCard } from './event-card-modal-markap';
+
 const body = document.querySelector('body');
 const openModalTeam = document.querySelector('.js-open-team-modal');
 const modalTeam = document.querySelector('[data-modal-team]');
@@ -13,45 +15,50 @@ const modalWindow = document.querySelector('.modal');
 
 openModalTeam.addEventListener('click', addHiddenClassToTeam);
 closeTeam.addEventListener('click', addHiddenClassToTeam);
-backdropModalTeam.addEventListener('click', (e) => {
-	if (!e.composedPath().includes(developers)) {
-		modalTeam.classList.toggle("backdrop-hidden");
-		body.classList.toggle("no-scroll")
-	}
+backdropModalTeam.addEventListener('click', e => {
+  if (!e.composedPath().includes(developers)) {
+    modalTeam.classList.toggle('backdrop-hidden');
+    body.classList.toggle('no-scroll');
+  }
 });
 
 galleryCard.addEventListener('click', addHiddenClassToModal);
 closeModal.addEventListener('click', addHiddenClassToModal);
-backdropModal.addEventListener('click', (e) => {
-	if (!e.composedPath().includes(modalWindow)) {
-		modal.classList.toggle("backdrop-hidden");
-		body.classList.remove("no-scroll")
-	}
-})
+backdropModal.addEventListener('click', e => {
+  if (!e.composedPath().includes(modalWindow)) {
+    modal.classList.toggle('backdrop-hidden');
+    body.classList.remove('no-scroll');
+  }
+});
 
 function addHiddenClassToTeam(e) {
-	modalTeam.classList.toggle("backdrop-hidden");
-	body.classList.toggle("no-scroll")
-	closeByKeybord(modalTeam);
+  modalTeam.classList.toggle('backdrop-hidden');
+  body.classList.toggle('no-scroll');
+  closeByKeybord(modalTeam);
 }
 
 function addHiddenClassToModal(e) {
-	e.preventDefault();
+  e.preventDefault();
 
-	if (e.target.nodeName === "UL") {
-		return;
-	};
+  if (e.target.nodeName === 'UL') {
+    return;
+  }
 
-	modal.classList.toggle("backdrop-hidden");
-	body.classList.toggle("no-scroll")
-	closeByKeybord(modal)
+  renderGalleryCard();
+  modal.classList.toggle('backdrop-hidden');
+  body.classList.toggle('no-scroll');
+  closeByKeybord(modal);
 }
 
 function closeByKeybord(value) {
-	document.addEventListener("keydown", (e) => {
-		if (e.code == "Escape") {
-			value.classList.add("backdrop-hidden");
-			body.classList.remove("no-scroll")
-		}
-	}, { once: true });
+  document.addEventListener(
+    'keydown',
+    e => {
+      if (e.code == 'Escape') {
+        value.classList.add('backdrop-hidden');
+        body.classList.remove('no-scroll');
+      }
+    },
+    { once: true }
+  );
 }
