@@ -7,7 +7,7 @@ const developers = document.querySelector('.developers');
 
 const modal = document.querySelector('[data-modal]');
 const closeModal = document.querySelector('[data-close]');
-const galleryCard = document.querySelector('.js-gallery-card');
+const galleryCard = document.querySelector('.js-events-gallery');
 const backdropModal = document.querySelector('[data-modal]');
 const modalWindow = document.querySelector('.modal');
 
@@ -30,7 +30,6 @@ backdropModal.addEventListener('click', (e) => {
 })
 
 function addHiddenClassToTeam(e) {
-	// e.stopPropagation();
 	modalTeam.classList.toggle("backdrop-hidden");
 	body.classList.toggle("no-scroll")
 	closeByKeybord(modalTeam);
@@ -38,6 +37,11 @@ function addHiddenClassToTeam(e) {
 
 function addHiddenClassToModal(e) {
 	e.preventDefault();
+
+	if (e.target.nodeName === "UL") {
+		return;
+	};
+
 	modal.classList.toggle("backdrop-hidden");
 	body.classList.toggle("no-scroll")
 	closeByKeybord(modal)
