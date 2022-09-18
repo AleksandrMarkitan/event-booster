@@ -4,7 +4,10 @@ const gallery = document.querySelector(".js-events-gallery")
 
 export async function displayGallery(options){
     const res = await EventsAPI.getEvents(options)
-    gallery.innerHTML = galleryMarkup(res);      
+    if(res.length!=0){
+      return gallery.innerHTML = galleryMarkup(res);   
+    }
+    gallery.innerHTML = galleryMarkupZeroReq();
 }
 
 function galleryMarkup(arr = []){
@@ -34,4 +37,6 @@ function galleryMarkup(arr = []){
             </a>
         </div></li>`;}, "")
 }
-
+function galleryMarkupZeroReq(){
+    return;
+}
