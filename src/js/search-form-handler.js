@@ -25,8 +25,6 @@ refs.countrylist.addEventListener('click', onCountrylistHdlr);
 refs.keyword.addEventListener('input', debounce(onKeywordHdlr, 500));
 
 function onSelectCountryFieldHdlr(e) {
-  console.log(e.target.value);
-
   const filterCountries = findeCountry(e.target.value, countries);
   refs.countrylist.innerHTML = markapCountryList(filterCountries);
   refs.selectCountryField.classList.add('select__field');
