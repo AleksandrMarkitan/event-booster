@@ -60,6 +60,5 @@ function onCountrylistHdlr(e) {
 
 function onKeywordHdlr(e) {
   keyword = e.target.value;
-  console.log(e.target.value);
   displayGallery({ countryCode, keyword });
 }
