@@ -12,12 +12,27 @@
 	justify-content: center;
 	align-items: center;
 
-	color: $primary-text-color;
+}
+
+.pagination__btn {
+  line-height: calc(17.07/14);
+  color: $primary-text-color;
 	font-size: $mob-primary-font-size;
 
 	@include bp(tab) {
 		font-size: $primary-font-size;
+    line-height: calc(19.5/16);
 	}
+  &--points{
+    line-height: calc(17.07/14);
+    color: $primary-text-color;
+    font-size: $mob-primary-font-size;
+
+    @include bp(tab){
+      line-height: calc(21.94/18);
+    }
+
+  }
 }
 
 .current-page {

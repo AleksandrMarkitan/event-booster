@@ -1,10 +1,15 @@
 import { EventsAPI } from "./eventsAPI";
-
+import { createPagination } from './pagination-markap';
+import './pagination-markap';
 const gallery = document.querySelector(".js-events-gallery")
 
 export async function displayGallery(options){
     const res = await EventsAPI.getEvents(options)
-    gallery.innerHTML = galleryMarkup(res);      
+    gallery.innerHTML = galleryMarkup(res);
+    createPagination(currentPage, totalPages);
+    const currentBtn = document.querySelector(`button[value='${currentPage}']`);
+    console.log(currentBtn);
+    currentBtn.classList.add('current-page');
 }
 
 function galleryMarkup(arr = []){
@@ -16,7 +21,7 @@ function galleryMarkup(arr = []){
                 return elem
             }
         })||images[0]
-        return acc += 
+        return acc +=
         `<li class="class="gallery__item js-gallery-card" data-id ="${id}">
          <div class="gallery__div">
             <a class="gallery__link animation" href="">

@@ -10,11 +10,6 @@ body {
 	}
 }
 
-
-// .gallery-section {
-//   background-color: $primary-bg-color;
-// }
-// hidden text h2 for validator
 .visually-hidden {
 	position: absolute;
 	width: 1px;
@@ -27,11 +22,3 @@ body {
 	clip: rect(0 0 0 0);
 	overflow: hidden;
 }
-
-
-// .portfolio-team:not(:nth-last-child(-n+4)) {
-//   margin-bottom: 30px;
-// }
-// .portfolio-team:not(:nth-child(4n)) {
-//   margin-right: 30px;
-// }
