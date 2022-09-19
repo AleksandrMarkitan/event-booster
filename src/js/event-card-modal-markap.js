@@ -24,11 +24,12 @@ export function createMarkupEventCard(cardObject) {
   } = cardObject;
 
   const { name: nameOfPlace, city, country } = venues[0];
-  const img = images[0];
 
-  if (img.ratio === '16_9' && img.height >= 664) {
-    return img;
-  }
+  const img = images.find(e => {
+    if (e.height >= 350) {
+      return e;
+    }
+  });
 
   let standardText = '';
   let vipText = '';
@@ -66,7 +67,7 @@ export function createMarkupEventCard(cardObject) {
           <li class="content__item">
             <h2 class="modal__title">WHEN</h2>
             <p class="modal__text">${localDate}</p>
-            <p class="modal__text">${localTime || ''} (${timezone})</p>
+            <p class="modal__text">${localTime || ''} ${timezone || ''}</p>
           </li>
           <li class="content__item">
             <h2 class="modal__title">WHERE</h2>
@@ -91,7 +92,7 @@ export function createMarkupEventCard(cardObject) {
                   }</p>
                   <p class="modal__text">${vipText || ''}</p>
                 </div>
-                <a class="modal__btn" target="_blank" href="${url}">BUY TICKETS</a>
+                <a class="modal__btn modal-animation" target="_blank" href="${url}">BUY TICKETS</a>
               </li>
               
             </ul>
@@ -99,7 +100,7 @@ export function createMarkupEventCard(cardObject) {
         </ul>
       </div>
 
-      <a class="btn-info" target="_blank" href="https://www.google.com/search?client=opera&q=${name}&sourceid=opera&ie=UTF-8&oe=UTF-8"
+      <a class="btn-info modal-animation" target="_blank" href="https://www.google.com/search?client=opera&q=${name}&sourceid=opera&ie=UTF-8&oe=UTF-8"
         >MORE FROM THIS AUTHOR</a
       >
     `;
