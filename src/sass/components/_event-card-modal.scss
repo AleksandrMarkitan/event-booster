@@ -92,12 +92,15 @@
 }
 
 .text-wrap {
+  height: 100px;
+  overflow: auto;
   @include bp(tab) {
     width: 287px;
   }
 
   @include bp(desk) {
     width: 487px;
+    height: 88px;
   }
 }
 
