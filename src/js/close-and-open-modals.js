@@ -39,12 +39,12 @@ function addHiddenClassToTeam(e) {
 
 function addHiddenClassToModal(e) {
   e.preventDefault();
-
+  console.log(e.target.parentNode.dataset.id);
   if (e.target.nodeName === 'UL') {
     return;
   }
 
-  renderGalleryCard();
+  renderGalleryCard(e.target.parentNode.dataset.id);
   modal.classList.toggle('backdrop-hidden');
   body.classList.toggle('no-scroll');
   closeByKeybord(modal);
