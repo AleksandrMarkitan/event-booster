@@ -8,6 +8,13 @@ body {
 	}
 }
 
+.page-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100vh;
+}
+
 .modal-close-btn {
 	position: absolute;
 	right: 24px;
