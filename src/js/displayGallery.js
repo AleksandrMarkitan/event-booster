@@ -11,6 +11,12 @@ export async function displayGallery(options){
     console.log(currentBtn);
     currentBtn.classList.add('current-page');
 }
+// const res = await EventsAPI.getEvents(options);
+// if(res){
+//   return gallery.innerHTML = galleryMarkup(res);
+// }
+// gallery.innerHTML = galleryMarkupZeroReq();
+// >>>>>>> main
 
 function galleryMarkup(arr = []){
     return arr.reduce((acc, event)=>{
