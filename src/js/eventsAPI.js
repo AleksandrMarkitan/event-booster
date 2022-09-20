@@ -72,6 +72,3 @@ const id = 'vvG1HZ92maYSm6';
 const event = EventsAPI.getEvent(id);
 console.log(event);
 event.then(r => console.log(r.data));
-
-const events = EventsAPI.getEvents();
-console.log(events);
