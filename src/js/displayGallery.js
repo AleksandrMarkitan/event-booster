@@ -46,11 +46,7 @@ function onPaginationClick(e) {
   let country = document.querySelector('.country_list');
 
   //створити  Дисплєй гелери под Страну и Поиск...
-<<<<<<< Updated upstream
   displayGallery({ page: page})
-=======
-  displayGallery({ page })
->>>>>>> Stashed changes
 }
 
 	// if (e.target.nodeName === "BUTTON") {
