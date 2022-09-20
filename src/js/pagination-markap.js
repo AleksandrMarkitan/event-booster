@@ -1,4 +1,5 @@
 
+import { EventsAPI } from './eventsAPI';
 
 const paginationIteam = document.querySelector('.pagination');
 
@@ -19,13 +20,14 @@ export function getPagination(currentPage, totalPages) {
       currentPage += 1;
     }
     pagiItem += `<li class="pagination__page"><button class="pagination__btn--points" type="button">...</button></li>
-<li class="pagination__page"><button  class='pagination__btn' value="${maxPage}" type="button">${maxPage+1}</button></li>`;
+    <li class="pagination__page"><button  class='pagination__btn' value="${maxPage}" type="button">${maxPage+1}</button></li>`;
   }
 paginationIteam.innerHTML = pagiItem;
   //paginationIteam.insertAdjacentHTML('beforeend', pagiItem);
 }
 
-console.log(getPagination)
+
+// console.log(getPagination)
 
 // index.js
 // module.exports = () => {
