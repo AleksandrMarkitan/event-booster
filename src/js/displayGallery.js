@@ -1,5 +1,5 @@
 import { EventsAPI } from './eventsAPI';
-import { getPagination } from './pagination-markap';
+import { getPagination,nextPageForPagination,prevPageForPagination } from './pagination-markap';
 import './pagination-markap';
 import {qwerty} from '../images/sprite.svg#Map';
 
@@ -10,6 +10,7 @@ const gallery = document.querySelector('.js-events-gallery');
 export async function displayGallery(options) {
   const res = await EventsAPI.getEvents(options);
     if (res) {
+
       return gallery.innerHTML = galleryMarkup(res);
       }
    gallery.innerHTML = galleryMarkupZeroReq();
@@ -23,10 +24,22 @@ paginationList.addEventListener('click', onPaginationClick);
 function onPaginationClick(e) {
   if (e.currentTarget != e.target) {
   let myElem = e.target.closest('li')
+  let page = myElem.dataset.page;
+  if(myElem.classList.contains('load-prev-page')){
+    if(page > 0){
+      prevPageForPagination()
+    }
 
-	let page = myElem.dataset.page;
+  }else if(myElem.classList.contains('load-next-page')){
+    if(page < EventsAPI.getTotalPages()){
+      nextPageForPagination();
+    }
 
-  getPagination(EventsAPI.getCurrentPage(), EventsAPI.getTotalPages());
+  }
+
+
+  getPagination(EventsAPI.getTotalPages());
+  console.log('------------------');
   displayGallery({ page: page})
 }
 	// if (e.target.nodeName === "BUTTON") {
@@ -81,7 +94,6 @@ function galleryMarkup(arr = []) {
         </div></li>`);
 	}, '');
 }
-console.log(qwerty)
 
 function galleryMarkupZeroReq() {
 	return `<div class="zero-matches">
