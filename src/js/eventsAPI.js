@@ -1,5 +1,6 @@
 
 import axios from 'axios';
+
 export class EventsAPI {
 	static apikey = 'GfgVh4R7D4nbAHFUVOA6O71Si5aOA40O';
 	static params = {

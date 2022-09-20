@@ -1,31 +1,41 @@
 import { EventsAPI } from './eventsAPI';
 import { getPagination } from './pagination-markap';
 import './pagination-markap';
+import {qwerty} from '../images/sprite.svg#Map';
+
+
 const gallery = document.querySelector('.js-events-gallery');
 
 
 export async function displayGallery(options) {
-	const res = await EventsAPI.getEvents(options);
-	if (res) {
-		return gallery.innerHTML = galleryMarkup(res);
-	}
-	gallery.innerHTML = galleryMarkupZeroReq();
-}
+  const res = await EventsAPI.getEvents(options);
+    if (res) {
+      return gallery.innerHTML = galleryMarkup(res);
+      }
+   gallery.innerHTML = galleryMarkupZeroReq();
+   }
+    // const currentBtn = document.querySelector(`button[value='${currentPage}']`);
+
 
 const paginationList = document.querySelector('.pagination')
 paginationList.addEventListener('click', onPaginationClick);
 
 function onPaginationClick(e) {
-	let page = e.target.value;
+  if (e.currentTarget != e.target) {
+  let myElem = e.target.closest('li')
 
-	if (e.target.nodeName === "BUTTON") {
-		displayGallery({ page: page })
-	}
+	let page = myElem.dataset.page;
+
+  getPagination(EventsAPI.getCurrentPage(), EventsAPI.getTotalPages());
+  displayGallery({ page: page})
+}
+	// if (e.target.nodeName === "BUTTON") {
+	// 	displayGallery({ page: page })
+	// }
 }
 
 
 function galleryMarkup(arr = []) {
-	getPagination(EventsAPI.getCurrentPage(), EventsAPI.getTotalPages());
 	return arr.reduce((acc, event) => {
 		const {
 			name,
@@ -59,17 +69,19 @@ function galleryMarkup(arr = []) {
                     <p class="event-data">${localDate}</p>
                     <p class="event-place" data-id ="${id}">
                         <svg class="Map__icon" width="7" height="10">
-                            <use href="./images/sprite.svg#Map"></use>
-                        </svg>${nameOfPlace ||
-			cityName ||
-			address ||
-			'No info about place'
-			}</p>
+                            <use href="${qwerty}"></use>
+                        </svg>${
+                          nameOfPlace ||
+                          cityName ||
+                          address ||
+                          'No info about place'
+                        }</p>
                 </div>
             </a>
         </div></li>`);
 	}, '');
 }
+console.log(qwerty)
 
 function galleryMarkupZeroReq() {
 	return `<div class="zero-matches">
