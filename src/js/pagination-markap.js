@@ -1,45 +1,48 @@
-
-import { EventsAPI } from './eventsAPI';
-
 const paginationIteam = document.querySelector('.pagination');
+const max = 29;
+let startPage = 0;
 
-export function getPagination(currentPage, totalPages) {
+export function nextPageForPagination(){
+  startPage++;
+}
+
+export function prevPageForPagination(){
+  startPage--;
+}
+
+export function getPagination( totalPages) {
+  console.log('create pagination', startPage, totalPages);
+  let currentPager = startPage;
   let pagiItem = '';
-  let maxPage;
-  if(totalPages > 29){
-    maxPage = 29
+  let maxPage = totalPages;
+  if(totalPages > max){
+    maxPage = max
   }
-  if (totalPages <= 5) {
-    for (let i = 0; i < totalPages; i += 1) {
-      pagiItem += `<li class="pagination__page"><button  class='pagination__btn' value="${currentPage}" type="button">${currentPage+1}</button></li>`;
-      currentPage += 1;
+  if (maxPage <= 5) {
+    for (let i = 0; i < maxPage; i += 1) {
+      pagiItem += `<li class="pagination__page" data-page="${currentPager}" ><button  class='pagination__btn' value="${currentPager}" type="button">${currentPager+1}</button></li>`;
+      currentPager += 1;
     }
-  } else if(totalPages > 5) {
+  } else if(maxPage > 5) {
     for (let i = 0; i < 5; i += 1 ){
-      pagiItem += `<li class="pagination__page"><button  class='pagination__btn' value="${currentPage}" type="button">${currentPage+1}</button></li>`;
-      currentPage += 1;
+      pagiItem += `<li class="pagination__page ${i == 0 ? "load-prev-page":""} ${i == 4 ? "load-next-page":""}" data-page="${currentPager}" ><button  class='pagination__btn' value="${currentPager}" type="button">${currentPager+1}</button></li>`;
+      currentPager += 1;
     }
     pagiItem += `<li class="pagination__page"><button class="pagination__btn--points" type="button">...</button></li>
-    <li class="pagination__page"><button  class='pagination__btn' value="${maxPage}" type="button">${maxPage+1}</button></li>`;
+    <li class="pagination__page" data-max="${maxPage}"><button  class='pagination__btn' value="${maxPage}" type="button">${maxPage+1}</button></li>`;
   }
+
 paginationIteam.innerHTML = pagiItem;
   //paginationIteam.insertAdjacentHTML('beforeend', pagiItem);
 }
 
 
 // console.log(getPagination)
+// let buttonValue = e.target.value;
 
-// index.js
-// module.exports = () => {
-//   const data = { users: [] }
-//   // Create 1000 users
-//   for (let i = 0; i < 1000; i++) {
-//     data.users.push({ id: i, name: `user${i}`
-//     `<li>
-//           <h2 class="post-title">${title.slice(0, 30)}</h2>
-//         </li>`;
-//       }).join('');
-//       userList.insertAdjacentHTML('beforeend', markup);
-//   }
-//   return data
-// }
+// const paginationList = document.querySelector('.pagination')
+// paginationList.addEventListener('click', e=> {
+// EventsAPI.page = buttonValue;
+// displayGallery(buttonValue)
+// console.log(displayGallery(buttonValue))
+// });

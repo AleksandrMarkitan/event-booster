@@ -1,5 +1,5 @@
-
 import axios from 'axios';
+
 export class EventsAPI {
 	static apikey = 'GfgVh4R7D4nbAHFUVOA6O71Si5aOA40O';
 	static params = {
@@ -76,3 +76,7 @@ export class EventsAPI {
 	}
 }
 
+const id = 'vvG1HZ92maYSm6';
+const event = EventsAPI.getEvent(id);
+console.log(event);
+event.then(r => console.log(r.data));
