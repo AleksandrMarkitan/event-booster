@@ -1,4 +1,5 @@
 import { EventsAPI } from './eventsAPI';
+
 import { getPagination,nextPageForPagination,prevPageForPagination } from './pagination-markap';
 import './pagination-markap';
 import {qwerty} from '../images/sprite.svg';
@@ -8,15 +9,14 @@ const gallery = document.querySelector('.js-events-gallery');
 
 
 export async function displayGallery(options) {
-  const res = await EventsAPI.getEvents(options);
-    if (res) {
 
-      return gallery.innerHTML = galleryMarkup(res);
-      }
-   gallery.innerHTML = galleryMarkupZeroReq();
-   }
-    // const currentBtn = document.querySelector(`button[value='${currentPage}']`);
-
+	const res = await EventsAPI.getEvents(options);
+	if (res) {
+		return gallery.innerHTML = galleryMarkup(res);
+	}
+	gallery.innerHTML = galleryMarkupZeroReq();
+}
+// const currentBtn = document.querySelector(`button[value='${currentPage}']`);
 
 const paginationList = document.querySelector('.pagination')
 paginationList.addEventListener('click', onPaginationClick);
@@ -36,14 +36,13 @@ function onPaginationClick(e) {
     }
 
   }
-
-
   getPagination(EventsAPI.getTotalPages());
   console.log('------------------');
 
   //створити  Дисплєй гелери под Страну и Поиск...
   displayGallery({ page: page})
 }
+
 	// if (e.target.nodeName === "BUTTON") {
 	// 	displayGallery({ page: page })
 	// }
