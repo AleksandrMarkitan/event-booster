@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 export class EventsAPI {
 	static apikey = 'GfgVh4R7D4nbAHFUVOA6O71Si5aOA40O';
@@ -14,8 +13,8 @@ export class EventsAPI {
 	 * @returns - Array of events
 	 */
 	static async getEvents(options = {}) {
-		const { countryCode = '', keyword = '', size = '', page = '' } = options;
-		if (keyword.trim() || countryCode.trim() || page != EventsAPI.currentPage) {
+		const { countryCode = '', keyword = '', size = '' } = options;
+		if (keyword.trim() || countryCode.trim()) {
 			EventsAPI.params = {
 				...options,
 			};
@@ -69,3 +68,7 @@ export class EventsAPI {
 	}
 }
 
+const id = 'vvG1HZ92maYSm6';
+const event = EventsAPI.getEvent(id);
+console.log(event);
+event.then(r => console.log(r.data));
