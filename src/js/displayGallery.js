@@ -14,30 +14,28 @@ export async function displayGallery(options) {
       }
    gallery.innerHTML = galleryMarkupZeroReq();
    }
-    //gallery.innerHTML = galleryMarkupZeroReq(); перекрівает galleryMarkup когда делаешь валидній запрос...нужно немного доделать логику
-    // console.log(EventsAPI.currentPage);
-    // console.log(EventsAPI.totalPages);
     // const currentBtn = document.querySelector(`button[value='${currentPage}']`);
-    // try{
-    //   currentBtn.classList.add('current-page');
-    // } catch(error){
-    // }
 
 
 const paginationList = document.querySelector('.pagination')
 paginationList.addEventListener('click', onPaginationClick);
 
 function onPaginationClick(e) {
-	let page = e.target.value;
+  if (e.currentTarget != e.target) {
+  let myElem = e.target.closest('li')
 
-	if (e.target.nodeName === "BUTTON") {
-		displayGallery({ page: page })
-	}
+	let page = myElem.dataset.page;
+
+  getPagination(EventsAPI.getCurrentPage(), EventsAPI.getTotalPages());
+  displayGallery({ page: page})
+}
+	// if (e.target.nodeName === "BUTTON") {
+	// 	displayGallery({ page: page })
+	// }
 }
 
 
 function galleryMarkup(arr = []) {
-	getPagination(EventsAPI.getCurrentPage(), EventsAPI.getTotalPages());
 	return arr.reduce((acc, event) => {
 		const {
 			name,
