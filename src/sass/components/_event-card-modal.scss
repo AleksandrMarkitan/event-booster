@@ -166,3 +166,13 @@
     padding: 10px 15px;
   }
 }
+
+.price__icon {
+  display: none;
+
+  @include bp(tab) {
+    width: 24px;
+    height: 16px;
+    display: block;
+  }
+}

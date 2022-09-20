@@ -84,7 +84,7 @@ export function createMarkupEventCard(cardObject) {
             <ul class="price__list">
               <li class="price__item">
                 <div class="price__wrap">
-                  <svg width="24" height="16">
+                  <svg class = "price__icon" >
                     <use href="${svg}#Ticket"></use>
                   </svg>
                   <p class="modal__text">${
