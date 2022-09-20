@@ -5,6 +5,9 @@ export class EventsAPI {
 	static params = {
 		countryCode: 'us',
 	};
+	static page = "0";
+	static countryCode = "us"
+	static keyword = "";
 	static totalPages = 0;
 	static currentPage = 0;
 	/**
@@ -14,18 +17,22 @@ export class EventsAPI {
 	 * @returns - Array of events
 	 */
 	static async getEvents(options = {}) {
-		const { countryCode = '', keyword = '', size = '' } = options;
+		const { countryCode = '', keyword = '', size = '', page = '' } = options;
 		if (keyword.trim() || countryCode.trim()) {
-			EventsAPI.params = {
-				...options,
-			};
+			EventsAPI.countryCode = countryCode;
+			EventsAPI.keyword = keyword;
+		}
+		if(page != EventsAPI.currentPage){
+			EventsAPI.page= page;
 		}
 		try {
 			const res = await axios.get(
 				'https://app.ticketmaster.com/discovery/v2/events.json',
 				{
 					params: {
-						...EventsAPI.params,
+						page: EventsAPI.page,
+						countryCode: EventsAPI.countryCode,
+						keyword: EventsAPI.keyword,
 						apikey: EventsAPI.apikey,
 					},
 				}
