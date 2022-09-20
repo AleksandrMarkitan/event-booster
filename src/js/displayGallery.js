@@ -1,6 +1,9 @@
 import { EventsAPI } from './eventsAPI';
 import { getPagination } from './pagination-markap';
 import './pagination-markap';
+import {qwerty} from '../images/sprite.svg#Map';
+
+
 const gallery = document.querySelector('.js-events-gallery');
 
 
@@ -21,12 +24,7 @@ export async function displayGallery(options) {
     // }
 
 
-    const paginationList = document.querySelector('.pagination')
-    paginationList.addEventListener('click', e=> {
-    EventsAPI.page = e.target.value;
-    displayGallery(e.target.value)
-    console.log(displayGallery(e.target.value))
-    });
+
 
 
 
@@ -67,7 +65,7 @@ function galleryMarkup(arr = []) {
                     <p class="event-data">${localDate}</p>
                     <p class="event-place" data-id ="${id}">
                         <svg class="Map__icon" width="7" height="10">
-                            <use href="./images/sprite.svg#Map"></use>
+                            <use href="${qwerty}"></use>
                         </svg>${
                           nameOfPlace ||
                           cityName ||
@@ -79,6 +77,7 @@ function galleryMarkup(arr = []) {
         </div></li>`);
   }, '');
 }
+console.log(qwerty)
 
 function galleryMarkupZeroReq() {
   return `<div class="zero-matches">

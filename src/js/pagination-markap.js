@@ -3,6 +3,7 @@ import { EventsAPI } from './eventsAPI';
 
 const paginationIteam = document.querySelector('.pagination');
 
+
 export function getPagination(currentPage, totalPages) {
   let pagiItem = '';
   let maxPage;
@@ -28,18 +29,11 @@ paginationIteam.innerHTML = pagiItem;
 
 
 // console.log(getPagination)
+// let buttonValue = e.target.value;
 
-// index.js
-// module.exports = () => {
-//   const data = { users: [] }
-//   // Create 1000 users
-//   for (let i = 0; i < 1000; i++) {
-//     data.users.push({ id: i, name: `user${i}`
-//     `<li>
-//           <h2 class="post-title">${title.slice(0, 30)}</h2>
-//         </li>`;
-//       }).join('');
-//       userList.insertAdjacentHTML('beforeend', markup);
-//   }
-//   return data
-// }
+// const paginationList = document.querySelector('.pagination')
+// paginationList.addEventListener('click', e=> {
+// EventsAPI.page = buttonValue;
+// displayGallery(buttonValue)
+// console.log(displayGallery(buttonValue))
+// });
