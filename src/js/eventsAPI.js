@@ -17,8 +17,9 @@ export class EventsAPI {
 	 * @returns - Array of events
 	 */
 	static async getEvents(options = {}) {
-		const { countryCode = '', keyword = '', size = '', page = '' } = options;
+		const { countryCode = '', keyword = '', size = '', page = '0' } = options;
 		if (keyword.trim() || countryCode.trim()) {
+			EventsAPI.page= page;
 			EventsAPI.countryCode = countryCode;
 			EventsAPI.keyword = keyword;
 		}
