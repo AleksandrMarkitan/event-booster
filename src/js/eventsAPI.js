@@ -4,19 +4,19 @@ export class EventsAPI{
     static params ={
         countryCode: 'us',
     };
-    static totalPages = 0; 
+    static totalPages = 0;
     static currentPage = 0;
     /**
-     * 
+     *
      * @param {options} options - Object of options of query look into API_DOC
-     * 
+     *
      * @returns - Array of events
      */
     static async getEvents(options={}){
         const {countryCode = "", keyword ="", size =""}=options;
         if(keyword.trim()||countryCode.trim()){
             EventsAPI.params = {
-                ...options, 
+                ...options,
             }
         }
         try{
@@ -31,20 +31,20 @@ export class EventsAPI{
             return res.data._embedded.events;
         }catch(e){
 
-        } 
+        }
     }
     /**
-     * 
+     *
      * @returns - Current page of Query. Start from ZERO
      */
     static getCurrentPage(){
         return EventsAPI.currentPage;
     }
     /**
-     * 
+     *
      * @returns - Total pages of events
      */
     static getTotalPages(){
         return EventsAPI.totalPages;
-    } 
+    }
 }

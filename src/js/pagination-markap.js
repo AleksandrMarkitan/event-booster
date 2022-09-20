@@ -1,36 +1,31 @@
-const paginationIteam = document.querySelector('.pagination');
-let maxPage;
-export function displayPaginationMarkup(currentPage, totalPages) {
-  let elemLi;
-  if (totalPages > 29) {
-    maxPage = 29;
-  } else {
-    maxPage = totalPages;
-  }
-  if (totalPages <= 6) {
-    for (let i = 0; i < totalPages; i += 1) {
-      elemLi += `<li class="pagination__page"><button  class='pagination__btn' value="${currentPage}" type="button"
-       >${currentPage + 1}</button></li>`;
-      currentPage += 1;
-    }
-  } else if (totalPages > 6 && maxPage === 29) {
-    elemLi += `<li class="pagination__page"><button class='pagination__btn' value="0" type="button">1</button></li>`;
-    for (let i = 1; i < 6; i += 1) {
-      currentPage += 1;
-      elemLi += `<li class="pagination__page"><button class='pagination__btn' value="${currentPage}" type="button">${
-        currentPage + 1
-      }</button></li>`;
-    }
-    elemLi += `<li class="pagination__page"><button class='pagination__btn' type="button">...</button></li>
-    <li class="pagination__page"><button class='pagination__btn' value="${
-      maxPage - 1
-    }" type="button">${maxPage}</button></li>`;
-  }
 
-  paginationIteam.innerHTML = elemLi;
+
+const paginationIteam = document.querySelector('.pagination');
+
+export function getPagination(currentPage, totalPages) {
+  let pagiItem = '';
+  let maxPage;
+  if(totalPages > 29){
+    maxPage = 29
+  }
+  if (totalPages <= 5) {
+    for (let i = 0; i < totalPages; i += 1) {
+      pagiItem += `<li class="pagination__page"><button  class='pagination__btn' value="${currentPage}" type="button">${currentPage+1}</button></li>`;
+      currentPage += 1;
+    }
+  } else if(totalPages > 5) {
+    for (let i = 0; i < 5; i += 1 ){
+      pagiItem += `<li class="pagination__page"><button  class='pagination__btn' value="${currentPage}" type="button">${currentPage+1}</button></li>`;
+      currentPage += 1;
+    }
+    pagiItem += `<li class="pagination__page"><button class="pagination__btn--points" type="button">...</button></li>
+<li class="pagination__page"><button  class='pagination__btn' value="${maxPage}" type="button">${maxPage+1}</button></li>`;
+  }
+paginationIteam.innerHTML = pagiItem;
+  //paginationIteam.insertAdjacentHTML('beforeend', pagiItem);
 }
 
-
+console.log(getPagination)
 
 // index.js
 // module.exports = () => {

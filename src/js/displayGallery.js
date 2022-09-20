@@ -1,20 +1,31 @@
 import { EventsAPI } from './eventsAPI';
-// import { displayPaginationMarkup } from './pagination-markap';
+import { getPagination } from './pagination-markap';
 import './pagination-markap';
 const gallery = document.querySelector('.js-events-gallery');
 
 export async function displayGallery(options) {
   const res = await EventsAPI.getEvents(options);
   if (res) {
-    return (gallery.innerHTML = galleryMarkup(res));
-  }
-  gallery.innerHTML = galleryMarkupZeroReq();
+    gallery.innerHTML = galleryMarkup(res);
+    getPagination(EventsAPI.currentPage, EventsAPI.totalPages);
+    //gallery.innerHTML = galleryMarkupZeroReq(); перекрівает galleryMarkup когда делаешь валидній запрос...нужно немного доделать логику
+    console.log(EventsAPI.currentPage);
+    console.log(EventsAPI.totalPages);
+    const currentBtn = document.querySelector(`button[value='${currentPage}']`);
+    try{
+      currentBtn.classList.add('current-page');
+    } catch(error){
 
-  //   displayPaginationMarkup(currentPage, totalPages);
-  //   const currentBtn = document.querySelector(`button[value='${currentPage}']`);
-  //   console.log(currentBtn);
-  //   currentBtn.classList.add('current-page');
+    }
+  }
 }
+
+const paginationList =document.querySelector('.pagination')
+paginationList.addEventListener('click', e=> {
+EventsAPI.page = e.target.value;
+displayGallery('')
+});
+
 
 function galleryMarkup(arr = []) {
   return arr.reduce((acc, event) => {
