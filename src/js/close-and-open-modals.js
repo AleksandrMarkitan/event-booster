@@ -22,7 +22,7 @@ backdropModalTeam.addEventListener('click', e => {
 	}
 });
 
-galleryCard.addEventListener('click', addHiddenClassToModal, { once: true });
+galleryCard.addEventListener('click', removeHiddenClassToModal);
 closeModal.addEventListener('click', addHiddenClassToModal);
 backdropModal.addEventListener('click', e => {
 	if (!e.composedPath().includes(modalWindow)) {
@@ -37,9 +37,9 @@ function addHiddenClassToTeam(e) {
 	closeByKeybord(modalTeam);
 }
 
-function addHiddenClassToModal(e) {
+function removeHiddenClassToModal(e) {
 	e.preventDefault();
-	// console.log(e.target.parentNode.dataset.id);
+
 	if (e.target.nodeName === 'UL') {
 		return;
 	}
@@ -49,9 +49,14 @@ function addHiddenClassToModal(e) {
 	}
 
 	renderGalleryCard(e.target.parentNode.dataset.id);
-	modal.classList.toggle('backdrop-hidden');
-	body.classList.toggle('no-scroll');
+	modal.classList.remove('backdrop-hidden');
+	body.classList.add('no-scroll');
 	closeByKeybord(modal);
+}
+
+function addHiddenClassToModal() {
+	modal.classList.add('backdrop-hidden');
+	body.classList.remove('no-scroll');
 }
 
 function closeByKeybord(value) {
