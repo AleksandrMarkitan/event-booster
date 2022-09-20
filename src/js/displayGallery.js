@@ -1,10 +1,5 @@
 import { EventsAPI } from './eventsAPI';
-<<<<<<< Updated upstream
 
-=======
-import {keyword} from './search-form-handler';
-import {countryCode} from './search-form-handler';
->>>>>>> Stashed changes
 import { getPagination,nextPageForPagination,prevPageForPagination } from './pagination-markap';
 import './pagination-markap';
 import {qwerty} from '../images/sprite.svg';
@@ -14,7 +9,7 @@ const gallery = document.querySelector('.js-events-gallery');
 
 
 export async function displayGallery(options) {
-  console.log(options);
+
 	const res = await EventsAPI.getEvents(options);
 	if (res) {
 		return gallery.innerHTML = galleryMarkup(res);
@@ -43,7 +38,6 @@ function onPaginationClick(e) {
   }
   getPagination(EventsAPI.getTotalPages());
   console.log('------------------');
-  let country = document.querySelector('.country_list');
 
   //створити  Дисплєй гелери под Страну и Поиск...
   displayGallery({ page: page})
