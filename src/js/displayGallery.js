@@ -1,5 +1,5 @@
 import { EventsAPI } from './eventsAPI';
-
+import { countryCode, keyword} from './search-form-handler';
 import { getPagination,nextPageForPagination,prevPageForPagination } from './pagination-markap';
 import './pagination-markap';
 import {qwerty} from '../images/sprite.svg';
@@ -40,7 +40,9 @@ function onPaginationClick(e) {
   console.log('------------------');
 
   //створити  Дисплєй гелери под Страну и Поиск...
-  displayGallery({ page: page})
+  console.log(page);
+  console.log(countryCode, keyword);
+  displayGallery({ countryCode, keyword, page })
 }
 
 	// if (e.target.nodeName === "BUTTON") {
