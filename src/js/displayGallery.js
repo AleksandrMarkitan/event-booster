@@ -2,6 +2,9 @@ import { EventsAPI } from './eventsAPI';
 import { getPagination } from './pagination-markap';
 import svg from '../images/sprite.svg';
 import './pagination-markap';
+import { qwerty } from '../images/sprite.svg#Map';
+
+
 const gallery = document.querySelector('.js-events-gallery');
 
 
@@ -12,21 +15,28 @@ export async function displayGallery(options) {
 	}
 	gallery.innerHTML = galleryMarkupZeroReq();
 }
+// const currentBtn = document.querySelector(`button[value='${currentPage}']`);
+
 
 const paginationList = document.querySelector('.pagination')
 paginationList.addEventListener('click', onPaginationClick);
 
 function onPaginationClick(e) {
-	let page = e.target.value;
+	if (e.currentTarget != e.target) {
+		let myElem = e.target.closest('li')
 
-	if (e.target.nodeName === "BUTTON") {
+		let page = myElem.dataset.page;
+
+		getPagination(EventsAPI.getCurrentPage(), EventsAPI.getTotalPages());
 		displayGallery({ page: page })
 	}
+	// if (e.target.nodeName === "BUTTON") {
+	// 	displayGallery({ page: page })
+	// }
 }
 
 
 function galleryMarkup(arr = []) {
-	getPagination(EventsAPI.getCurrentPage(), EventsAPI.getTotalPages());
 	return arr.reduce((acc, event) => {
 		const {
 			name,
@@ -71,6 +81,7 @@ function galleryMarkup(arr = []) {
         </div></li>`);
 	}, '');
 }
+console.log(qwerty)
 
 function galleryMarkupZeroReq() {
 	return `<div class="zero-matches">
