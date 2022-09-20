@@ -68,7 +68,7 @@ function onCountrylistHdlr(e) {
 					 <p class="event-place">
 						  <svg class="Map__icon" width="7" height="10">
 								<use href="${svg}#Map"></use>
-						  </svg>The last way</p>
+						  </svg>HELL</p>
 				</div>
 		  </a>
 	 </div></li>`;
