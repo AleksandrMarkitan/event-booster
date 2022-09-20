@@ -49,18 +49,18 @@ function galleryMarkup(arr = []) {
           return elem;
         }
       }) || images[0];
-    return (acc += `<li class="class="gallery__item js-gallery-card" data-id ="${id}">
-         <div class="gallery__div">
-            <a class="gallery__link animation" href="">
+    return (acc += `<li class="gallery__item" >
+         <div class="gallery__div" data-id ="${id}">
+            <a class="gallery__link animation js-gallery-card" data-id ="${id}" href="">
                 <img class="gallery__img" src="${
                   eventImg.url
                 }" width="267px" height="337px"
                     alt="thing">
                 <div class="gallery__pinkBorder"></div>
-                <div class="event-info">
+                <div class="event-info" data-id ="${id}">
                     <h3 class="event-heading">${name}</h3>
                     <p class="event-data">${localDate}</p>
-                    <p class="event-place">
+                    <p class="event-place" data-id ="${id}">
                         <svg class="Map__icon" width="7" height="10">
                             <use href="./images/sprite.svg#Map"></use>
                         </svg>${

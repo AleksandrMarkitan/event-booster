@@ -1,48 +1,48 @@
 import { EventsAPI } from './eventsAPI';
+import svg from '../images/sprite.svg';
 
 const galleryCard = document.querySelector('.modal__wrap');
 
 export async function renderGalleryCard(id) {
-  const response = await EventsAPI.getEvents((options = { id }));
-  console.log(response);
-  galleryCard.innerHTML = createMarkupEventCard(response);
+  const response = await EventsAPI.getEvent(id);
+  galleryCard.innerHTML = createMarkupEventCard(response.data);
 }
 
-export function createMarkupEventCard(arr) {
-  return arr.reduce((acc, propertys) => {
-    const {
-      name,
-      images,
-      url,
-      info,
-      priceRanges,
-      dates: {
-        start: { localDate, localTime },
-        timezone,
-      },
+export function createMarkupEventCard(cardObject) {
+  const {
+    name,
+    images,
+    url,
+    info,
+    priceRanges,
+    dates: {
+      start: { localDate, localTime },
+      timezone,
+    },
 
-      _embedded: { venues },
-    } = propertys;
+    _embedded: { venues },
+  } = cardObject;
 
-    const { name: nameOfPlace, city, country } = venues[0];
-    const img = images[0];
+  const { name: nameOfPlace, city, country } = venues[0];
 
-    if (img.ratio === '16_9' && img.height >= 664) {
-      return img;
+  const img = images.find(e => {
+    if (e.height >= 350) {
+      return e;
     }
+  });
 
-    let standardText = '';
-    let vipText = '';
+  let standardText = '';
+  let vipText = '';
 
-    if (priceRanges) {
-      const { type, currency, min, max } = priceRanges;
-      if (type === 'standard') {
-        standardText = `${type}:  ${min}-${max} ${currency}`.toUpperCase();
-      } else if (type === 'VIP') {
-        vipText = `${type}:  ${min}-${max} ${currency}`.toUpperCase();
-      }
+  if (priceRanges) {
+    const { type, currency, min, max } = priceRanges;
+    if (type === 'standard') {
+      standardText = `${type}:  ${min}-${max} ${currency}`.toUpperCase();
+    } else if (type === 'VIP') {
+      vipText = `${type}:  ${min}-${max} ${currency}`.toUpperCase();
     }
-    return (acc = `
+  }
+  return `
       <img
         class="modal__preview"
         src="${img.url}"
@@ -67,7 +67,7 @@ export function createMarkupEventCard(arr) {
           <li class="content__item">
             <h2 class="modal__title">WHEN</h2>
             <p class="modal__text">${localDate}</p>
-            <p class="modal__text">${localTime || ''} (${timezone})</p>
+            <p class="modal__text">${localTime || ''} ${timezone || ''}</p>
           </li>
           <li class="content__item">
             <h2 class="modal__title">WHERE</h2>
@@ -85,14 +85,14 @@ export function createMarkupEventCard(arr) {
               <li class="price__item">
                 <div class="price__wrap">
                   <svg width="24" height="16">
-                    <use href="./images/sprite.svg#Ticket"></use>
+                    <use href="${svg}#Ticket"></use>
                   </svg>
                   <p class="modal__text">${
                     standardText || 'Click on "BUY TICKET" for more information'
                   }</p>
                   <p class="modal__text">${vipText || ''}</p>
                 </div>
-                <a class="modal__btn" href="${url}">BUY TICKETS</a>
+                <a class="modal__btn modal-animation" target="_blank" href="${url}">BUY TICKETS</a>
               </li>
               
             </ul>
@@ -100,9 +100,8 @@ export function createMarkupEventCard(arr) {
         </ul>
       </div>
 
-      <a class="btn-info" href="https://www.google.com/search?client=opera&q=${name}&sourceid=opera&ie=UTF-8&oe=UTF-8"
+      <a class="btn-info modal-animation" target="_blank" href="https://www.google.com/search?client=opera&q=${name}&sourceid=opera&ie=UTF-8&oe=UTF-8"
         >MORE FROM THIS AUTHOR</a
       >
-    `);
-  }, '');
+    `;
 }
