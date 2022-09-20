@@ -2,7 +2,7 @@ import { EventsAPI } from './eventsAPI';
 
 import { getPagination,nextPageForPagination,prevPageForPagination } from './pagination-markap';
 import './pagination-markap';
-import { qwerty } from '../images/sprite.svg#Map';
+import {qwerty} from '../images/sprite.svg';
 
 
 const gallery = document.querySelector('.js-events-gallery');
@@ -38,6 +38,8 @@ function onPaginationClick(e) {
   }
   getPagination(EventsAPI.getTotalPages());
   console.log('------------------');
+
+  //створити  Дисплєй гелери под Страну и Поиск...
   displayGallery({ page: page})
 }
 
@@ -81,12 +83,13 @@ function galleryMarkup(arr = []) {
                     <p class="event-data">${localDate}</p>
                     <p class="event-place" data-id ="${id}">
                         <svg class="Map__icon" width="7" height="10">
-                            <use href="${svg}#Map"></use>
-                        </svg>${nameOfPlace ||
-			cityName ||
-			address ||
-			'No info about place'
-			}</p>
+                            <use href="${qwerty}#Map"></use>
+                        </svg>${
+                          nameOfPlace ||
+                          cityName ||
+                          address ||
+                          'No info about place'
+                        }</p>
                 </div>
             </a>
         </div></li>`);
