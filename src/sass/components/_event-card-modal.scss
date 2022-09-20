@@ -97,14 +97,31 @@
 }
 
 .text-wrap {
+  width: 100%;
   height: 100px;
   overflow: auto;
+
+  &::-webkit-scrollbar-track {
+    margin-right: 20px;
+    background-color: $accent-color; /*Цвет скролла*/
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px; /*Закругление ползунка*/
+    background-color: $dark-modal-text-color; /*Цвет ползунка*/
+  }
+  &::-webkit-scrollbar {
+    width: 10px; /*Толщина скролла*/
+  }
+
+  scrollbar-color: $accent-color $dark-modal-text-color; /*Цвет скролла, цвет ползунка*/
+  scrollbar-width: 10px; /*Толщина скролла thin, auto*/
+
   @include bp(tab) {
     width: 287px;
   }
 
   @include bp(desk) {
-    width: 487px;
+    width: 427px;
     height: 88px;
   }
 }

@@ -15,8 +15,8 @@ const refs = {
   selectSvg: document.querySelector('.select__svg'),
 };
 
-let countryCode = '';
-let keyword = '';
+export let countryCode = '';
+export let keyword = '';
 
 refs.selectCountryField.addEventListener(
   'input',

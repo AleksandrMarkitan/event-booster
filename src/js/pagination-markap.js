@@ -1,33 +1,42 @@
-
 import { EventsAPI } from './eventsAPI';
+import { countryCode } from './search-form-handler';
+import { keyword } from './search-form-handler';
 
 const paginationIteam = document.querySelector('.pagination');
 const max = 29;
 
 export function getPagination(currentPage, totalPages) {
+  console.log(currentPage);
+  console.log(countryCode);
+  console.log(keyword);
   let pagiItem = '';
   let maxPage;
-  if(totalPages > max){
-    maxPage = max
+  if (totalPages > max) {
+    maxPage = max;
   }
   if (totalPages <= 5) {
     for (let i = 0; i < totalPages; i += 1) {
-      pagiItem += `<li class="pagination__page" data-page="${currentPage}" ><button  class='pagination__btn' value="${currentPage}" type="button">${currentPage+1}</button></li>`;
+      pagiItem += `<li class="pagination__page" data-page="${currentPage}" ><button  class='pagination__btn' value="${currentPage}" type="button">${
+        currentPage + 1
+      }</button></li>`;
       currentPage += 1;
     }
-  } else if(totalPages > 5) {
-    for (let i = 0; i < 5; i += 1 ){
-      pagiItem += `<li class="pagination__page" data-page="${currentPage}" ><button  class='pagination__btn' value="${currentPage}" type="button">${currentPage+1}</button></li>`;
+  } else if (totalPages > 5) {
+    for (let i = 0; i < 5; i += 1) {
+      pagiItem += `<li class="pagination__page" data-page="${currentPage}" ><button  class='pagination__btn' value="${currentPage}" type="button">${
+        currentPage + 1
+      }</button></li>`;
       currentPage += 1;
     }
     pagiItem += `<li class="pagination__page"><button class="pagination__btn--points" type="button">...</button></li>
-    <li class="pagination__page" data-max="${maxPage}"><button  class='pagination__btn' value="${maxPage}" type="button">${maxPage+1}</button></li>`;
+    <li class="pagination__page" data-max="${maxPage}"><button  class='pagination__btn' value="${maxPage}" type="button">${
+      maxPage + 1
+    }</button></li>`;
   }
   console.log(paginationIteam);
-paginationIteam.innerHTML = pagiItem;
-  //paginationIteam.insertAdjacentHTML('beforeend', pagiItem);
+  paginationIteam.innerHTML = pagiItem;
+  paginationIteam.insertAdjacentHTML('beforeend', pagiItem);
 }
-
 
 // console.log(getPagination)
 // let buttonValue = e.target.value;
