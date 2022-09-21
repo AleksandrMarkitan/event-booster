@@ -6,9 +6,7 @@ import './js/event-card-modal-handler';
 import './js/event-card-modal-markap';
 import './js/eventsAPI';
 import './js/pagination-handler';
-import './js/pagination-markap';
 import './js/search-form-handler';
 import { displayGallery } from './js/displayGallery';
-import { getPagination } from './js/pagination-markap';
-displayGallery({ countryCode: 'CH', size: 40 });
-getPagination(5);
+
+displayGallery({ countryCode: 'CH', size: 20 });

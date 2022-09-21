@@ -1,72 +1,108 @@
-// const paginationFetch = document.querySelector(".pagination");
-// const userList = document.querySelector(".posts");
-// const alertPopup = document.querySelector(".alert");
-// let isAlertVisible = false;
+import { EventsAPI } from './eventsAPI';
+import { countryCode } from './search-form-handler';
+import { keyword } from './search-form-handler';
+import { displayGallery } from './displayGallery';
 
-// // Controls the group number
-// let page = 20;
-// // Controls the number of items in the group
-// let limit = '';
-// // In our case total number of pages is calculated on frontend
-// const totalPages = limit;
+const paginationIteam = document.querySelector('.pagination');
 
-// paginationFetch.addEventListener("click", () => {
-//   // Check the end of the collection to display an alert
-//   if (page > totalPages) {
-//   } else {}
+paginationIteam.addEventListener('click', onpaginationIteamHdlr);
 
-//   fetchPosts()
-//     .then((posts) => {
-//       renderPosts(posts);
-//       // Increase the group number
-//       page += 1;
+function onpaginationIteamHdlr(e) {
+  const page = Number(e.target.dataset.page) - 1;
+  displayGallery({ countryCode, keyword, page });
+}
 
-//       // Replace button text after first request
-//       if (page > 1) {
-//         fetchPostsBtn.textContent = "Fetch more posts";
-//       }
-//     })
-//     .catch((error) => console.log(error));
-// });
+export function paginationMarkap(totalPages, pageNumber) {
+  let pageArrResp = [];
+  let pageArr = [];
+  for (let index = 1; index <= totalPages; index += 1) {
+    pageArrResp.push(index);
+  }
 
-// function fetchPosts() {
-//   const params = new URLSearchParams({
-//     _limit: limit,
-//     _page: page
-//   });
+  if (pageArrResp.length > 30) {
+    pageArr = pageArrResp.slice(0, 30);
+  } else pageArr = pageArrResp;
 
-//   return fetch(`https://jsonplaceholder.typicode.com/posts?${params}`).then(
-//     (response) => {
-//       if (!response.ok) {
-//         throw new Error(response.status);
-//       }
-//       return response.json();
-//     }
-//   );
-// }
+  if (pageArr.length <= 7) {
+    const markap1 = pageArr.reduce(
+      (acc, number, index, arr) =>
+        (acc += `<li class="pagination-item" data-page=${number}>${number}</li>`),
+      ``
+    );
+    return markap1;
+  }
 
-// function renderPosts(posts) {
-//   const markup = posts
-//     .map(({ id, title, body, userId }) => {
-//       return `<li>
-//           <h2 class="post-title">${title.slice(0, 30)}</h2>
-//           <p><b>Post id</b>: ${id}</p>
-//           <p><b>Author id</b>: ${userId}</p>
-//           <p class="post-body">${body}</p>
-//         </li>`;
-//     })
-//     .join("");
-//   userList.insertAdjacentHTML("beforeend", markup);
-// }
+  if ((pageArr.length > 7) & (pageNumber < 5)) {
+    const markap1 = pageArr.reduce((acc, number, index, arr) => {
+      if (index < 5 || arr.length <= 7) {
+        acc += `<li class="pagination-item" data-page=${number}>${number}</li>`;
+      }
+      return acc;
+    }, ``);
+    const markap2 = pageArr.reduce((acc, number, index, arr) => {
+      if ((arr.length > 6) & (index >= 5) & (index <= arr.length - 1)) {
+        return `<li class="pagination-item" data-page=${number}>...</li>`;
+      }
+    });
+    const markap3 = pageArr.reduce((acc, number, index, arr) => {
+      if ((arr.length > 5) & (index === arr.length - 1)) {
+        return `<li class="pagination-item" data-page=${number}>${number}</li>`;
+      }
+    });
+    return markap1 + markap2 + markap3;
+  }
 
-// function toggleAlertPopup() {
-//   if (isAlertVisible) {
-//     return;
-//   }
-//   isAlertVisible = true;
-//   alertPopup.classList.add("is-visible");
-//   setTimeout(() => {
-//     alertPopup.classList.remove("is-visible");
-//     isAlertVisible = false;
-//   }, 3000);
-// }
+  if ((pageArr.length > 7) & (pageNumber >= 5)) {
+    const markap1 = pageArr.reduce((acc, number, index, arr) => {
+      if (index === 1) {
+        acc += `<li class="pagination-item" data-page=${index}>${index}</li>`;
+      }
+      return acc;
+    }, ``);
+    const markap2 = pageArr.reduce((acc, number, index, arr) => {
+      if ((index > 1) & (index < pageNumber - 1)) {
+        return `<li class="pagination-item" data-page=${index}>...</li>`;
+      }
+      return acc;
+    }, ``);
+    const markap3 = pageArr.reduce((acc, number, index, arr) => {
+      if (
+        (index >= pageNumber - 1) &
+        (index <= pageNumber + 1) &
+        (pageNumber < arr.length - 5)
+      ) {
+        acc += `<li class="pagination-item" data-page=${index}>${index}</li>`;
+      }
+      return acc;
+    }, ``);
+    const markap4 = pageArr.reduce((acc, number, index, arr) => {
+      if (
+        (index >= pageNumber + 1) &
+        (index <= arr.length - 5) &
+        (pageNumber < arr.length - 4)
+      ) {
+        return `<li class="pagination-item" data-page=${index}>...</li>`;
+      }
+      return acc;
+    }, ``);
+
+    const markap5 = pageArr.reduce((acc, number, index, arr) => {
+      if (
+        (index >= arr.length - 5) &
+        (index <= arr.length - 2) &
+        (pageNumber > arr.length - 6)
+      ) {
+        acc += `<li class="pagination-item" data-page=${number}>${number}</li>`;
+      }
+      return acc;
+    }, ``);
+    const markap6 = pageArr.reduce((acc, number, index, arr) => {
+      if (index === arr.length - 1) {
+        return `<li class="pagination-item" data-page=${number}>${number}</li>`;
+      }
+      return acc;
+    }, ``);
+
+    return markap1 + markap2 + markap3 + markap4 + markap5 + markap6;
+  }
+}
